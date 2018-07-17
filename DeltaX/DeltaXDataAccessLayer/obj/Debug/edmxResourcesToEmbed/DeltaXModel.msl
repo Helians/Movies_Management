@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DeltaXModelStoreContainer" CdmEntityContainer="DeltaXDBContext">
+    <EntitySetMapping Name="Actors">
+      <EntityTypeMapping TypeName="DeltaXModel.Actor">
+        <MappingFragment StoreEntitySet="Actor">
+          <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+          <ScalarProperty Name="ActorName" ColumnName="ActorName" />
+          <ScalarProperty Name="ActorSex" ColumnName="ActorSex" />
+          <ScalarProperty Name="ActorDOB" ColumnName="ActorDOB" />
+          <ScalarProperty Name="ActorBio" ColumnName="ActorBio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="DeltaXModel.Movie">
+        <MappingFragment StoreEntitySet="Movie">
+          <ScalarProperty Name="MovieYearOfRelease" ColumnName="MovieYearOfRelease" />
+          <ScalarProperty Name="MoviePlot" ColumnName="MoviePlot" />
+          <ScalarProperty Name="ProducerId" ColumnName="ProducerId" />
+          <ScalarProperty Name="MoviePoster" ColumnName="MoviePoster" />
+          <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+          <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producers">
+      <EntityTypeMapping TypeName="DeltaXModel.Producer">
+        <MappingFragment StoreEntitySet="Producer">
+          <ScalarProperty Name="ProducerDOB" ColumnName="ProducerDOB" />
+          <ScalarProperty Name="ProducerBio" ColumnName="ProducerBio" />
+          <ScalarProperty Name="ProducerSex" ColumnName="ProducerSex" />
+          <ScalarProperty Name="ProducerName" ColumnName="ProducerName" />
+          <ScalarProperty Name="ProducerId" ColumnName="ProducerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ActorMovie" TypeName="DeltaXModel.ActorMovie" StoreEntitySet="ActorMovie">
+      <EndProperty Name="Movie">
+        <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+      </EndProperty>
+      <EndProperty Name="Actor">
+        <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

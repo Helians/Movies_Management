@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaXDataAccessLayer", "DeltaXDataAccessLayer\DeltaXDataAccessLayer.csproj", "{4D59E28D-0411-49D1-8ED4-ADD8AA9AFD85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaXWebApplication", "DeltaXWebApplication\DeltaXWebApplication.csproj", "{972104EC-50B4-449B-9D3B-FB1AA9B32B3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D59E28D-0411-49D1-8ED4-ADD8AA9AFD85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D59E28D-0411-49D1-8ED4-ADD8AA9AFD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D59E28D-0411-49D1-8ED4-ADD8AA9AFD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D59E28D-0411-49D1-8ED4-ADD8AA9AFD85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972104EC-50B4-449B-9D3B-FB1AA9B32B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972104EC-50B4-449B-9D3B-FB1AA9B32B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972104EC-50B4-449B-9D3B-FB1AA9B32B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972104EC-50B4-449B-9D3B-FB1AA9B32B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51553172-683E-45BE-AA57-155A55F67382}
+	EndGlobalSection
+EndGlobal

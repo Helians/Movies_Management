@@ -1,0 +1,16 @@
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\DeltaXDataAccessLayer.dll.config
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\DeltaXDataAccessLayer.dll
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\DeltaXDataAccessLayer.pdb
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\EntityFramework.dll
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\EntityFramework.xml
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\obj\Debug\DeltaXDataAccessLayer.csprojResolveAssemblyReference.cache
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\obj\Debug\DeltaXDataAccessLayer.csproj.CoreCompileInputs.cache
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\obj\Debug\DeltaXDataAccessLayer.dll
+c:\users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\obj\Debug\DeltaXDataAccessLayer.pdb
+C:\Users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\AutoMapper.dll
+C:\Users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\System.ValueTuple.dll
+C:\Users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\AutoMapper.pdb
+C:\Users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\AutoMapper.xml
+C:\Users\himanshu\source\repos\DeltaX\DeltaXDataAccessLayer\bin\Debug\System.ValueTuple.xml

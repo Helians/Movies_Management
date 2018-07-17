@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DeltaXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actor">
+    <Key>
+      <PropertyRef Name="ActorId" />
+    </Key>
+    <Property Name="ActorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActorName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ActorSex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ActorDOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActorBio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Movies" Relationship="DeltaXModel.ActorMovie" FromRole="Actor" ToRole="Movie" />
+  </EntityType>
+  <EntityContainer Name="DeltaXDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actors" EntityType="Self.Actor" />
+    <EntitySet Name="Movies" EntityType="DeltaXModel.Movie" />
+    <EntitySet Name="Producers" EntityType="DeltaXModel.Producer" />
+    <AssociationSet Name="FK__Movie__ProducerI__4F7CD00D" Association="DeltaXModel.FK__Movie__ProducerI__4F7CD00D">
+      <End Role="Producer" EntitySet="Producers" />
+      <End Role="Movie" EntitySet="Movies" />
+    </AssociationSet>
+    <AssociationSet Name="ActorMovie" Association="DeltaXModel.ActorMovie">
+      <End Role="Actor" EntitySet="Actors" />
+      <End Role="Movie" EntitySet="Movies" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="MovieId" />
+    </Key>
+    <Property Name="MovieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="MoviePoster" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProducerId" Type="Int32" />
+    <NavigationProperty Name="Producer" Relationship="DeltaXModel.FK__Movie__ProducerI__4F7CD00D" FromRole="Movie" ToRole="Producer" />
+    <NavigationProperty Name="Actors" Relationship="DeltaXModel.ActorMovie" FromRole="Movie" ToRole="Actor" />
+    <Property Name="MoviePlot" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MovieYearOfRelease" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producer">
+    <Key>
+      <PropertyRef Name="ProducerId" />
+    </Key>
+    <Property Name="ProducerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProducerName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="ProducerSex" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ProducerBio" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProducerDOB" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Movies" Relationship="DeltaXModel.FK__Movie__ProducerI__4F7CD00D" FromRole="Producer" ToRole="Movie" />
+  </EntityType>
+  <Association Name="FK__Movie__ProducerI__4F7CD00D">
+    <End Type="DeltaXModel.Producer" Role="Producer" Multiplicity="0..1" />
+    <End Type="DeltaXModel.Movie" Role="Movie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producer">
+        <PropertyRef Name="ProducerId" />
+      </Principal>
+      <Dependent Role="Movie">
+        <PropertyRef Name="ProducerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActorMovie">
+    <End Type="DeltaXModel.Actor" Role="Actor" Multiplicity="*" />
+    <End Type="DeltaXModel.Movie" Role="Movie" Multiplicity="*" />
+  </Association>
+</Schema>

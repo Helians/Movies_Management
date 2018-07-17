@@ -1,0 +1,169 @@
+﻿@model DeltaXWebApplication.Models.Movie
+
+@{
+	ViewBag.Title = "UpdateMovie";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+		
+	var selectedValues = [];
+	$(document).ready(function () {
+		$("#select option").click(function () {
+			var index = jQuery.inArray($(this).val(), selectedValues);
+			if (index == -1) {
+				selectedValues.push($(this).val());
+
+				var table = document.getElementById("ActorList");
+				var row = table.insertRow(0);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				cell1.innerHTML = $(this).val();
+				cell2.innerHTML = $(this).text();
+				cell3.innerHTML = "<button type='button' onclick='RemoveActor(this)'>Delete</button>";
+
+			}
+
+		});
+	});
+
+	function RemoveActor(a) {
+		var rowIndex = a.parentNode.parentNode.rowIndex;
+		var index = jQuery.inArray($("#ActorList tr:eq(" + rowIndex + ") td:eq(0)").text(), selectedValues);
+		selectedValues.splice(index, 1);
+		var table = document.getElementById("ActorList");
+		var row = table.deleteRow(rowIndex);
+	}
+
+	function GetActorsId() {
+		var s = "";
+		for (var i = 0; i < selectedValues.length; i++) {
+			if (i == 0)
+				s = s + selectedValues[i];
+			else
+				s = s + "," + selectedValues[i];
+		}
+		document.getElementById("ActorIdList").value = s;
+	}
+
+</script>
+<style>
+	#ActorList tr td:first-child,#ActorIdList {
+		visibility: hidden;
+	}
+</style>
+@using (Html.BeginForm("UpdateMovieDetails","Home"))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.MovieId)
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.MovieName, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.MovieName, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.MovieName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.MoviePoster, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.MoviePoster, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.MoviePoster, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.ProducerId, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("ProducerId", new MultiSelectList(ViewBag.producerList, "ProducerId", "ProducerName"), "--select--", htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.ProducerId, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.MoviePlot, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.MoviePlot, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.MoviePlot, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.MovieYearOfRelease, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.MovieYearOfRelease, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.MovieYearOfRelease, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Actors, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("ActorId", new SelectList(ViewBag.ActorList, "ActorId", "ActorName"), "--select--", htmlAttributes: new { @class = "form-control", @id = "select", @multiple = "multiple" })                @Html.ValidationMessageFor(model => model.ActorList, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-6">
+				@Html.EditorFor(model => model.ActorList, new { htmlAttributes = new { @class = "form-control", @id = "ActorIdList" } })
+			</div>
+		</div>
+
+		<div id="Acotrs">
+			<table id="ActorList"></table>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Save" class="btn btn-default" onclick="GetActorsId()" />
+			</div>
+		</div>
+	</div>
+}
+
+<a href="#" class="btn btn-md btn-success" data-toggle="modal" data-target="#addProducer">
+	Add Producer
+</a>
+
+
+<a href="#" class="btn btn-md btn-success" data-toggle="modal" data-target="#addActor">
+	Add Actor
+</a>
+
+<div class="modal fade" id="addActor" tabindex="-1" role="dialog" aria-labelledby="AddActor" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Add Actor</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				@{Html.RenderAction("RenderAddActor");}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="addProducer" tabindex="-1" role="dialog" aria-labelledby="AddProducer" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Add Producer</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				@{Html.RenderAction("RenderAddProducer");}
+			</div>
+		</div>
+	</div>
+</div>
+

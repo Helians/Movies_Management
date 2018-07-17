@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DeltaXWebApplication.Models.Actor>
+
+@{
+    ViewBag.Title = "GetAllActorsMVC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetAllActorsMVC</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ActorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActorSex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActorDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActorBio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActorSex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActorDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActorBio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

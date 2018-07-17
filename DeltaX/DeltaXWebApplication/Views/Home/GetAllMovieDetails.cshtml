@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DeltaXWebApplication.Models.Movie>
+
+@{
+	ViewBag.Title = "GetAllMovieDetails";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+
+	@foreach (var item in Model)
+	{
+	<tr>
+		<td>
+			<img src="@item.MoviePoster" class="img-thumbnail" width="180"/>
+		</td>
+		<td>
+			<h4>@Html.DisplayNameFor(model => model.MovieName):</h4>
+			<h4>@Html.DisplayNameFor(model => model.MoviePlot):</h4>
+			<h4>@Html.DisplayNameFor(model => model.MovieYearOfRelease):</h4>
+			<h4>@Html.DisplayNameFor(model => model.ProducerName):</h4>
+			<h4>@Html.DisplayNameFor(model => model.Actors):</h4>
+		</td>
+		<td>
+			<h4>@Html.DisplayFor(modelItem => item.MovieName)</h4>
+			<h4>@Html.DisplayFor(modelItem => item.MoviePlot)</h4>
+			<h4>@Html.DisplayFor(modelItem => item.MovieYearOfRelease)</h4>
+			<h4>@item.ProducerName</h4>
+			<h4>
+				@foreach (var a in item.Actors)
+					{@a}
+			</h4>
+		</td>
+		<td>
+			@Html.ActionLink("Update Details", "UpdateMovie",new { id = item.MovieId })
+		</td>
+	</tr>
+
+	}
+
+</table>
